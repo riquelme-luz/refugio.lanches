@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refúgio's Lanche</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<div id="modalAcai" class="modal">
+
+  <div class="modalConteudo">
+
+    <h2 id="tituloAcai"></h2>
+
+    <div id="listaAdicionais"></div>
+
+    <button class="btn-modal-confirmar" onclick="confirmarAcai()">
+      Adicionar ao Carrinho
+    </button>
+
+    <button class="btn-modal-fechar" onclick="fecharModal()">
+      Fechar
+    </button>
+
+  </div>
+
+</div>
+
+<div id="modalMilkshake" class="modal">
+
+  <div class="modalConteudo">
+
+    <h2 id="tituloMilkshake"></h2>
+
+    <div id="listaSabores"></div>
+
+    <button class="btn-modal-confirmar" onclick="confirmarMilkshake()">
+      Adicionar ao Carrinho
+    </button>
+
+    <button class="btn-modal-fechar" onclick="fecharModalMilkshake()">
+      Fechar
+    </button>
+
+  </div>
+
+</div>
+
+<div id="modalSuco" class="modal">
+
+  <div class="modalConteudo">
+
+    <h2 id="tituloSuco"></h2>
+
+    <div id="listaSaboresSuco"></div>
+
+    <button class="btn-modal-confirmar" onclick="confirmarSuco()">
+      Adicionar ao Carrinho
+    </button>
+
+    <button class="btn-modal-fechar" onclick="fecharModalSuco()">
+      Fechar
+    </button>
+
+  </div>
+
+</div>
+
+<div id="modalImagem" class="modal-imagem">
+  <div class="modal-imagem-conteudo">
+    <button class="btn-fechar-imagem" onclick="fecharModalImagem()">✕</button>
+    <img id="imagemAmpliada" src="" alt="Produto">
+    <h2 id="nomeImagemModal"></h2>
+  </div>
+</div>
+
+<body>
+
+<div id="toast" class="toast"></div>
+
+<header>
+  <div class="header-inner">
+    <img src="imagens/logo_refugio_vermelho.png" alt="Refúgio's Lanche" class="logo-img">
+    <div class="header-text">
+      <h1>Refúgio's Lanche</h1>
+      <p>🍔 Escolha seu pedido e envie pelo WhatsApp</p>
+      <span class="horario-badge">⏰ Sáb–Qui: 18h30–20h30</span>
+    </div>
+  </div>
+</header>
+
+<nav class="categorias">
+  <a href="#dogao">🌭 Dogão</a>
+  <a href="#lanches">🍔 Lanches</a>
+  <a href="#especiais">⭐ Especiais</a>
+  <a href="#porcoes">🍟 Porções</a>
+  <a href="#bebidas">🥤 Bebidas</a>
+  <a href="#sucosDrinks">🍹 Sucos & Drinks</a>
+  <a href="#acrescimos">➕ Acréscimos</a>
+  <a href="#sobremesas">🍰 Sobremesas</a>
+</nav>
+
+<main>
+  <section class="menu">
+    <input type="text" id="busca" placeholder="🔍 Pesquisar item no cardápio...">
+
+    <h2 id="dogao" class="tituloCategoria" onclick="toggleCategoria('dogaoLista', this)">
+      🌭 DOGÃO <span class="seta">▼</span>
+    </h2>
+    <div class="produtos" id="dogaoLista"></div>
+
+    <h2 id="lanches" class="tituloCategoria" onclick="toggleCategoria('lanchesLista', this)">
+      🍔 LANCHES <span class="seta">▼</span>
+    </h2>
+    <div class="produtos" id="lanchesLista"></div>
+
+    <h2 id="especiais" class="tituloCategoria" onclick="toggleCategoria('especiaisLista', this)">
+      ⭐ ESPECIAIS <span class="seta">▼</span>
+    </h2>
+    <div class="produtos" id="especiaisLista"></div>
+
+    <h2 id="porcoes" class="tituloCategoria" onclick="toggleCategoria('porcoesLista', this)">
+      🍟 PORÇÕES <span class="seta">▼</span>
+    </h2>
+    <div class="produtos" id="porcoesLista"></div>
+
+    <h2 id="bebidas" class="tituloCategoria" onclick="toggleCategoria('bebidasLista', this)">
+      🥤 BEBIDAS <span class="seta">▼</span>
+    </h2>
+    <div class="produtos" id="bebidasLista"></div>
+
+    <h2 id="sucosDrinks" class="tituloCategoria" onclick="toggleCategoria('sucosDrinksLista', this)">
+      🍹 SUCOS & DRINKS (SOMENTE CONSUMO NO LOCAL) <span class="seta">▼</span>
+    </h2>
+    <div class="produtos" id="sucosDrinksLista"></div>
+
+    <h2 id="acrescimos" class="tituloCategoria" onclick="toggleCategoria('acrescimosLista', this)">
+      ➕ ACRÉSCIMOS <span class="seta">▼</span>
+    </h2>
+    <div class="produtos" id="acrescimosLista"></div>
+
+    <h2 id="sobremesas" class="tituloCategoria" onclick="toggleCategoria('sobremesasLista', this)">
+    🍰 SOBREMESAS <span class="seta">▼</span>
+    </h2>
+    <div class="produtos" id="sobremesasLista"></div>
+  </section>
+
+  <aside class="carrinho" id="carrinhoBox">
+    <h2>🛒 Carrinho</h2>
+
+    <div id="itensCarrinho">
+      <div class="carrinho-vazio"><span>🛒</span>Seu carrinho está vazio</div>
+    </div>
+
+    <div class="total">
+      <span>Total:</span>
+      <span>R$ <span id="total">0,00</span></span>
+    </div>
+
+    <button class="btn-limpar" onclick="limparCarrinho()">Limpar Carrinho</button>
+
+    <h3>🚚 Forma de entrega</h3>
+    <select id="tipoEntrega" onchange="onEntregaChange()">
+      <option value="retirada">🏪 Retirar no local</option>
+      <option value="consumo">🍽️ Consumo no local</option>
+      <option value="refugio">🛵 Entrega Refúgio (R$ 3,00)</option>
+      <option value="fap">🛵 Entrega FAP (R$ 5,00)</option>
+    </select>
+
+    <p class="taxa-info">Entrega Refúgio: R$3,00 | Entrega FAP: R$5,00</p>
+
+    <div id="enderecoWrap">
+      <h3>📍 Endereço</h3>
+      <input type="text" id="endereco" placeholder="Rua, número, bairro...">
+      <div class="erro-msg" id="erro-endereco">Por favor, preencha o endereço</div>
+    </div>
+
+    <h3>👤 Seus dados</h3>
+    <input type="text" id="nome" placeholder="Seu nome completo">
+    <div class="erro-msg" id="erro-nome">Por favor, preencha seu nome</div>
+
+    <h3>💳 Forma de pagamento</h3>
+    <select id="pagamento">
+      <option value="">Selecione a forma de pagamento</option>
+      <option value="Pix">💸 Pix</option>
+      <option value="Dinheiro">💵 Dinheiro</option>
+      <option value="Cartão de Débito">💳 Cartão de Débito</option>
+      <option value="Cartão de Crédito">💳 Cartão de Crédito</option>
+    </select>
+    <div class="erro-msg" id="erro-pagamento">Por favor, selecione a forma de pagamento</div>
+
+    <textarea id="obs" placeholder="Observações (ex: sem cebola, molho extra...)"></textarea>
+
+    <button class="btn-finalizar" onclick="finalizarPedido()">
+        Finalizar no WhatsApp
+    </button>
+  </aside>
+</main>
+
+<button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script src="script.js"></script>
+</body>
+</html>
