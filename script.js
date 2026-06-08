@@ -201,7 +201,12 @@ function mostrarNotificacao(mensagem, tipo = 'aviso', duracao = 3000) {
 
 function filtrarProdutos(lista, termoBusca = '') {
   const termo = termoBusca.trim().toLowerCase();
-  if (!termo) return [];
+
+  if (!termo) {
+    return lista
+      .map(produto => ({ produto, prioridade: 1 }))
+      .sort((a, b) => a.produto.nome.localeCompare(b.produto.nome));
+  }
 
   const termoNormalizado = termo
     .normalize('NFD')
