@@ -131,6 +131,34 @@ main {
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
 }
 
+.resultado-busca {
+  display: none;
+  margin-bottom: 18px;
+  padding: 12px;
+  border: 1px solid #e5c483;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fffaf2 0%, #fff6e4 100%);
+  box-shadow: 0 6px 14px rgba(122, 0, 0, 0.08);
+}
+
+.resultado-busca.ativo {
+  display: block;
+}
+
+.resultado-titulo {
+  margin: 0 0 10px 0;
+  color: #7a0000;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.resultado-vazio {
+  margin: 0;
+  color: #7a0000;
+  font-weight: 700;
+}
+
 /* TITULO CATEGORIA */
 .tituloCategoria {
   background: #7a0000;

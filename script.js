@@ -199,69 +199,125 @@ function mostrarNotificacao(mensagem, tipo = 'aviso', duracao = 3000) {
   }, duracao);
 }
 
+function filtrarProdutos(lista, termoBusca = '') {
+  const termo = termoBusca.trim().toLowerCase();
+  if (!termo) return [];
+
+  const termoNormalizado = termo
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]/g, '');
+
+  return lista
+    .map(produto => {
+      const nomeLower = produto.nome.toLowerCase();
+      const descLower = produto.descricao.toLowerCase();
+      const nomeNormalizado = nomeLower
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]/g, '');
+      const descNormalizado = descLower
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]/g, '');
+
+      let prioridade = 0;
+      if (nomeNormalizado === termoNormalizado) prioridade = 5;
+      else if (nomeNormalizado.startsWith(termoNormalizado)) prioridade = 4;
+      else if (nomeNormalizado.includes(termoNormalizado)) prioridade = 3;
+      else if (descNormalizado === termoNormalizado) prioridade = 2;
+      else if (descNormalizado.includes(termoNormalizado)) prioridade = 1;
+
+      return { produto, prioridade };
+    })
+    .filter(item => item.prioridade > 0)
+    .sort((a, b) => b.prioridade - a.prioridade || a.produto.nome.localeCompare(b.produto.nome));
+}
+
+function criarCardProduto(produto, categoria = '', exibirImagem = true) {
+  const ehAcai = produto.nome.toLowerCase().includes("açai");
+  const ehBarcaOuBatida = produto.nome.toLowerCase().includes("barca") || produto.nome.toLowerCase().includes("batida");
+  const ehMilkshake = produto.nome.toLowerCase().includes("milkshake");
+  const ehSuco = produto.nome.toLowerCase().includes("suco") || produto.nome.toLowerCase().includes("drink");
+
+  const nomeImagem = gerarNomeImagem(produto.nome, categoria);
+  const populares = ['X-Calaboiza', 'X-Paulista', 'X-Tudo', 'Smash Burguer', 'Batida de Açai Tradicional 475ml'];
+  const tagPopular = populares.includes(produto.nome) ? '<span class="tag-popular">Mais pedido</span>' : '';
+  const caminhoImagemJpeg = encodeURI(`imagens/${nomeImagem}.jpeg`);
+  const caminhoImagemJpg = encodeURI(`imagens/${nomeImagem}.jpg`);
+  const caminhoImagemPng = encodeURI(`imagens/${nomeImagem}.png`);
+  const caminhoImagemSvg = encodeURI(`imagens/${nomeImagem}.svg`);
+
+  return `
+    <div class="card">
+      ${exibirImagem ? `
+      <div class="card-imagem" onclick="abrirModalImagem(this.querySelector('img').src, '${produto.nome}')">
+        <img src="${caminhoImagemJpeg}" 
+             onerror="if(!this.dataset.tentouJpg){this.dataset.tentouJpg='true'; this.src='${caminhoImagemJpg}';} else if(!this.dataset.tentouPng){this.dataset.tentouPng='true'; this.src='${caminhoImagemPng}';} else if(!this.dataset.tentouSvg){this.dataset.tentouSvg='true'; this.src='${caminhoImagemSvg}';} else {this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTAiIGhlaWdodD0iMjAwIj48cmVjdCBmaWxsPSIjZWVlIiB3aWR0aD0iMjUwIiBoZWlnaHQ9IjIwMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5TZW0gaW1hZ2VtPC90ZXh0Pjwvc3ZnPg==';}"
+             alt="${produto.nome}">
+      </div>` : ''}
+      ${tagPopular}
+      <h4>${produto.nome}</h4>
+      <p class="descricao">${produto.descricao}</p>
+      <p><b>R$ ${formatarPreco(produto.preco)}</b></p>
+      ${
+        ehAcai && !ehBarcaOuBatida
+        ? `<button onclick="abrirModalAcai('${produto.nome}', ${produto.preco})">Escolher Adicionais</button>`
+        : ehMilkshake
+        ? `<button onclick="abrirModalMilkshake('${produto.nome}', ${produto.preco})">Escolher Sabor</button>`
+        : ehSuco
+        ? `<button onclick="abrirModalSuco('${produto.nome}', ${produto.preco})">Escolher Sabor</button>`
+        : `<button onclick="adicionarCarrinho('${produto.nome}', ${produto.preco})">Adicionar ao Carrinho</button>`
+      }
+    </div>
+  `;
+}
+
 function mostrarProdutos(lista, idDiv, termoBusca = '') {
   const div = document.getElementById(idDiv);
   if (!div) return;
 
   div.innerHTML = '';
-  const termo = termoBusca.toLowerCase();
+  const itensFiltrados = filtrarProdutos(lista, termoBusca);
 
-  lista.forEach(produto => {
-    const nomeLower = produto.nome.toLowerCase();
-    const descLower = produto.descricao.toLowerCase();
+  itensFiltrados.forEach(({ produto }) => {
+    const categoria = idDiv === 'dogaoLista' ? 'dogao' : '';
+    const exibirImagem = !(idDiv === 'bebidasLista' || idDiv === 'acrescimosLista');
+    div.innerHTML += criarCardProduto(produto, categoria, exibirImagem);
+  });
+}
 
-    if (nomeLower.includes(termo) || descLower.includes(termo)) {
+function renderizarResultadosBusca(termoBusca = '') {
+  const container = document.getElementById('resultadoBusca');
+  if (!container) return;
 
-      const ehAcai = produto.nome.toLowerCase().includes("açai");
-      const ehBarcaOuBatida = produto.nome.toLowerCase().includes("barca") || produto.nome.toLowerCase().includes("batida");
-      const ehMilkshake = produto.nome.toLowerCase().includes("milkshake");
-      const ehSuco = produto.nome.toLowerCase().includes("suco") || produto.nome.toLowerCase().includes("drink");
+  container.innerHTML = '';
+  if (!termoBusca.trim()) {
+    container.classList.remove('ativo');
+    return;
+  }
 
-      const categoria = idDiv === 'dogaoLista' ? 'dogao' : '';
-      const nomeImagem = gerarNomeImagem(produto.nome, categoria);
-      const exibirImagem = !(idDiv === 'bebidasLista' || idDiv === 'acrescimosLista');
-      const populares = ['X-Calaboiza', 'X-Paulista', 'X-Tudo', 'Smash Burguer', 'Batida de Açai Tradicional 475ml'];
-      const tagPopular = populares.includes(produto.nome) ? '<span class="tag-popular">Mais pedido</span>' : '';
-      // Tenta jpg, jpeg, png e svg automaticamente
-      const caminhoImagemJpeg = encodeURI(`imagens/${nomeImagem}.jpeg`);
-      const caminhoImagemJpg = encodeURI(`imagens/${nomeImagem}.jpg`);
-      const caminhoImagemPng = encodeURI(`imagens/${nomeImagem}.png`);
-      const caminhoImagemSvg = encodeURI(`imagens/${nomeImagem}.svg`);
+  const itens = [
+    ...filtrarProdutos(dogao, termoBusca).map(item => ({ ...item, categoria: 'dogao' })),
+    ...filtrarProdutos(lanches, termoBusca).map(item => ({ ...item, categoria: 'lanches' })),
+    ...filtrarProdutos(especiais, termoBusca).map(item => ({ ...item, categoria: 'especiais' })),
+    ...filtrarProdutos(porcoes, termoBusca).map(item => ({ ...item, categoria: 'porcoes' })),
+    ...filtrarProdutos(bebidas, termoBusca).map(item => ({ ...item, categoria: 'bebidas' })),
+    ...filtrarProdutos(sucosDrinks, termoBusca).map(item => ({ ...item, categoria: 'sucosDrinks' })),
+    ...filtrarProdutos(acrescimos, termoBusca).map(item => ({ ...item, categoria: 'acrescimos' })),
+    ...filtrarProdutos(sobremesas, termoBusca).map(item => ({ ...item, categoria: 'sobremesas' }))
+  ].sort((a, b) => b.prioridade - a.prioridade || a.produto.nome.localeCompare(b.produto.nome));
 
-      div.innerHTML += `
-        <div class="card">
-          ${exibirImagem ? `
-          <div class="card-imagem" onclick="abrirModalImagem(this.querySelector('img').src, '${produto.nome}')">
-            <img src="${caminhoImagemJpeg}" 
-                 onerror="if(!this.dataset.tentouJpg){this.dataset.tentouJpg='true'; this.src='${caminhoImagemJpg}';} else if(!this.dataset.tentouPng){this.dataset.tentouPng='true'; this.src='${caminhoImagemPng}';} else if(!this.dataset.tentouSvg){this.dataset.tentouSvg='true'; this.src='${caminhoImagemSvg}';} else {this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTAiIGhlaWdodD0iMjAwIj48cmVjdCBmaWxsPSIjZWVlIiB3aWR0aD0iMjUwIiBoZWlnaHQ9IjIwMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5TZW0gaW1hZ2VtPC90ZXh0Pjwvc3ZnPg==';}"
-                 alt="${produto.nome}">
-          </div>` : ''}
-          ${tagPopular}
-          <h4>${produto.nome}</h4>
-          <p class="descricao">${produto.descricao}</p>
-          <p><b>R$ ${formatarPreco(produto.preco)}</b></p>
+  container.classList.toggle('ativo', itens.length > 0);
 
-          ${
-            ehAcai && !ehBarcaOuBatida
-            ? `<button onclick="abrirModalAcai('${produto.nome}', ${produto.preco})">
-                 Escolher Adicionais
-               </button>`
-            : ehMilkshake
-            ? `<button onclick="abrirModalMilkshake('${produto.nome}', ${produto.preco})">
-                 Escolher Sabor
-               </button>`
-            : ehSuco
-            ? `<button onclick="abrirModalSuco('${produto.nome}', ${produto.preco})">
-                 Escolher Sabor
-               </button>`
-            : `<button onclick="adicionarCarrinho('${produto.nome}', ${produto.preco})">
-                 Adicionar ao Carrinho
-               </button>`
-          }
+  if (!itens.length) {
+    container.innerHTML = '<p class="resultado-vazio">Nenhum item encontrado.</p>';
+    return;
+  }
 
-        </div>
-      `;
-    }
+  container.innerHTML = '<h3 class="resultado-titulo">Resultados da busca</h3>';
+  itens.forEach(({ produto, categoria }) => {
+    container.innerHTML += criarCardProduto(produto, categoria, true);
   });
 }
 
@@ -505,6 +561,8 @@ function confirmarSuco(){
 
 function atualizarCardapio() {
   const termo = document.getElementById("busca").value.trim().toLowerCase();
+
+  renderizarResultadosBusca(termo);
 
   mostrarProdutos(dogao, "dogaoLista", termo);
   mostrarProdutos(lanches, "lanchesLista", termo);
