@@ -136,8 +136,8 @@ function gerarNomeImagem(nomeProduto, categoria = '') {
   const mapeamento = {
     simples: 'dogao_simples',
     duplo: 'dogao_duplo',
-    'x-calaboiza': 'x_calaboiza',
-    'x-paulista': 'x_paulista',
+    'x-calaboiza': 'X-calaboiza',
+    'x-paulista': 'x-paulista',
     'x-tudo': 'x_tudo',
     'polenta (500g)': 'polenta',
     'batata (500g)': 'batata',

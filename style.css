@@ -1,5 +1,10 @@
 html {
   scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 body {
@@ -7,6 +12,7 @@ body {
   font-family: 'Lato', Arial, Helvetica, sans-serif;
   background: radial-gradient(circle at top, #f7eedc, #e6d3b1);
   color: #2c1d12;
+  overflow-x: hidden;
 }
 
 /* HEADER */
@@ -101,8 +107,10 @@ main {
   display: flex;
   gap: 20px;
   max-width: 1100px;
-  margin: auto;
+  width: 100%;
+  margin: 0 auto;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .menu {
@@ -112,6 +120,7 @@ main {
 /* BUSCA */
 #busca {
   width: 100%;
+  box-sizing: border-box;
   padding: 14px 14px 14px 42px;
   border-radius: 14px;
   border: 1px solid #bda98a;
@@ -467,27 +476,43 @@ input.erro, textarea.erro, select.erro {
 /* BOTÃO SUBIR TOPO */
 #scrollTopBtn {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-
-  background: #7a0000;
-  color: white;
-  border: none;
-  padding: 12px 16px;
-  border-radius: 50%;
-  font-size: 18px;
-  font-weight: bold;
+  bottom: 18px;
+  right: 18px;
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 999px;
+  background: linear-gradient(145deg, #8a0000, #6e0000);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
   cursor: pointer;
-
   display: none;
+  align-items: center;
+  justify-content: center;
   z-index: 9999;
-
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
-  transition: 0.2s;
-} 
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
 
 #scrollTopBtn:hover {
-  background: #a00000;
+  transform: translateY(-2px) scale(1.03);
+  background: linear-gradient(145deg, #a00000, #7a0000);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.32);
+}
+
+#scrollTopBtn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+@media (max-width: 768px) {
+  #scrollTopBtn {
+    bottom: 14px;
+    right: 14px;
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+  }
 }
 /*adicionais sobremesas*/
 .modal{
@@ -805,10 +830,19 @@ input.erro, textarea.erro, select.erro {
 @media (max-width: 768px) {
   main {
     flex-direction: column;
+    padding: 12px;
+    gap: 14px;
+  }
+
+  .menu,
+  .carrinho {
+    width: 100%;
+    min-width: 0;
   }
 
   .carrinho {
     position: static;
+    padding: 14px;
   }
 
   .produtos.ativo {
@@ -822,5 +856,29 @@ input.erro, textarea.erro, select.erro {
 
   .header-inner {
     flex-direction: column;
+  }
+
+  .header-text h1 {
+    font-size: 28px;
+  }
+
+  .tituloCategoria {
+    font-size: 18px;
+    padding: 10px 12px;
+  }
+
+  .produtos {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 8px 0;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .card-imagem {
+    height: 180px;
+    margin: -12px 0 12px 0;
   }
 }
