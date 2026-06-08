@@ -136,9 +136,9 @@ function gerarNomeImagem(nomeProduto, categoria = '') {
   const mapeamento = {
     simples: 'dogao_simples',
     duplo: 'dogao_duplo',
-    'x-calaboiza': 'X-calaboiza',
-    'x-paulista': 'X-paulista',
-    'x-tudo': 'X-tudo',
+    'x-calaboiza': 'x_calaboiza',
+    'x-paulista': 'x_paulista',
+    'x-tudo': 'x_tudo',
     'polenta (500g)': 'polenta',
     'batata (500g)': 'batata',
     'mandioca (500g)': 'mandioca',
@@ -220,9 +220,11 @@ function mostrarProdutos(lista, idDiv, termoBusca = '') {
       const categoria = idDiv === 'dogaoLista' ? 'dogao' : '';
       const nomeImagem = gerarNomeImagem(produto.nome, categoria);
       const exibirImagem = !(idDiv === 'bebidasLista' || idDiv === 'acrescimosLista');
+      const populares = ['X-Calaboiza', 'X-Paulista', 'X-Tudo', 'Smash Burguer', 'Batida de Açai Tradicional 475ml'];
+      const tagPopular = populares.includes(produto.nome) ? '<span class="tag-popular">Mais pedido</span>' : '';
       // Tenta jpg, jpeg, png e svg automaticamente
-      const caminhoImagemJpg = encodeURI(`imagens/${nomeImagem}.jpg`);
       const caminhoImagemJpeg = encodeURI(`imagens/${nomeImagem}.jpeg`);
+      const caminhoImagemJpg = encodeURI(`imagens/${nomeImagem}.jpg`);
       const caminhoImagemPng = encodeURI(`imagens/${nomeImagem}.png`);
       const caminhoImagemSvg = encodeURI(`imagens/${nomeImagem}.svg`);
 
@@ -234,6 +236,7 @@ function mostrarProdutos(lista, idDiv, termoBusca = '') {
                  onerror="if(!this.dataset.tentouJpg){this.dataset.tentouJpg='true'; this.src='${caminhoImagemJpg}';} else if(!this.dataset.tentouPng){this.dataset.tentouPng='true'; this.src='${caminhoImagemPng}';} else if(!this.dataset.tentouSvg){this.dataset.tentouSvg='true'; this.src='${caminhoImagemSvg}';} else {this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTAiIGhlaWdodD0iMjAwIj48cmVjdCBmaWxsPSIjZWVlIiB3aWR0aD0iMjUwIiBoZWlnaHQ9IjIwMCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5TZW0gaW1hZ2VtPC90ZXh0Pjwvc3ZnPg==';}"
                  alt="${produto.nome}">
           </div>` : ''}
+          ${tagPopular}
           <h4>${produto.nome}</h4>
           <p class="descricao">${produto.descricao}</p>
           <p><b>R$ ${formatarPreco(produto.preco)}</b></p>
@@ -501,7 +504,7 @@ function confirmarSuco(){
 }
 
 function atualizarCardapio() {
-  const termo = document.getElementById("busca").value;
+  const termo = document.getElementById("busca").value.trim().toLowerCase();
 
   mostrarProdutos(dogao, "dogaoLista", termo);
   mostrarProdutos(lanches, "lanchesLista", termo);
@@ -511,6 +514,19 @@ function atualizarCardapio() {
   mostrarProdutos(sucosDrinks, "sucosDrinksLista", termo);
   mostrarProdutos(acrescimos, "acrescimosLista", termo);
   mostrarProdutos(sobremesas, "sobremesasLista", termo);
+
+  document.querySelectorAll('.produtos').forEach(lista => {
+    const temItens = lista.querySelector('.card');
+    if (termo) {
+      lista.classList.add('ativo');
+      const titulo = document.querySelector(`.tituloCategoria[id="${lista.id.replace('Lista', '')}"]`);
+      if (titulo) titulo.classList.add('ativo');
+    } else {
+      lista.classList.remove('ativo');
+      const titulo = document.querySelector(`.tituloCategoria[id="${lista.id.replace('Lista', '')}"]`);
+      if (titulo) titulo.classList.remove('ativo');
+    }
+  });
 }
 
 function toggleCategoria(idLista, titulo) {
@@ -556,6 +572,12 @@ function mostrarToast(mensagem) {
   setTimeout(() => {
     toast.classList.remove("mostrar");
   }, 2000);
+}
+
+function atualizarBotaoTopo() {
+  const btn = document.getElementById('scrollTopBtn');
+  if (!btn) return;
+  btn.style.display = window.scrollY > 250 ? 'block' : 'none';
 }
 
 function animarCarrinho() {
@@ -613,7 +635,7 @@ function atualizarCarrinho() {
   itensCarrinho.innerHTML = "";
 
   if (carrinho.length === 0) {
-    itensCarrinho.innerHTML = `<div class="carrinho-vazio"><span>🛒</span>Seu carrinho esta vazio</div>`;
+    itensCarrinho.innerHTML = `<div class="carrinho-vazio"><span>🛒</span>Seu carrinho está vazio</div>`;
     totalEl.innerText = "0,00";
     total = 0;
     return;
@@ -740,6 +762,8 @@ function finalizarPedido() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  atualizarBotaoTopo();
+  window.addEventListener('scroll', atualizarBotaoTopo, { passive: true });
   atualizarCardapio();
   document.getElementById("busca").addEventListener("input", atualizarCardapio);
   document.getElementById("tipoEntrega").addEventListener("change", onEntregaChange);

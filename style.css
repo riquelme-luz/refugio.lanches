@@ -11,11 +11,13 @@ body {
 
 /* HEADER */
 header {
-  background: #7a0000;
+  background:
+    linear-gradient(135deg, #7a0000 0%, #9d0000 55%, #5f0000 100%);
   color: white;
-  padding: 28px 10px;
+  padding: 28px 10px 18px;
   text-align: center;
   border-bottom: 4px solid #500000;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
 }
 
 /* ORGANIZAÇÃO DO HEADER */
@@ -47,7 +49,15 @@ header {
   opacity: 0.95;
 }
 
-/* BADGE HORÁRIO */
+/* BADGES DO HEADER */
+.hero-badges {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
 .horario-badge {
   display: inline-block;
   margin-top: 10px;
@@ -102,12 +112,14 @@ main {
 /* BUSCA */
 #busca {
   width: 100%;
-  padding: 12px;
-  border-radius: 12px;
+  padding: 14px 14px 14px 42px;
+  border-radius: 14px;
   border: 1px solid #bda98a;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   font-size: 16px;
-  background: #fff6e4;
+  background: #fff6e4 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237a0000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='20' y1='20' x2='16.65' y2='16.65'/%3E%3C/svg%3E") 12px center no-repeat;
+  background-size: 18px 18px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
 }
 
 /* TITULO CATEGORIA */
@@ -161,17 +173,43 @@ main {
 
 /* CARD */
 .card {
-  background: #fff6e4;
+  background: linear-gradient(180deg, #fffaf2 0%, #fff6e4 100%);
   padding: 15px;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid #d8c3a2;
-  box-shadow: 0px 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0px 6px 14px rgba(0,0,0,0.12);
   transition: 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -40% auto;
+  width: 120px;
+  height: 120px;
+  background: rgba(122, 0, 0, 0.06);
+  border-radius: 50%;
 }
 
 .card:hover {
   transform: translateY(-3px);
   box-shadow: 0px 6px 14px rgba(0,0,0,0.18);
+}
+
+.tag-popular {
+  display: inline-block;
+  margin-bottom: 6px;
+  background: #fff2d4;
+  color: #7a0000;
+  border: 1px solid #e5c483;
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .card h4 {
