@@ -31,15 +31,23 @@ const especiais = [
 ];
 
 const porcoes = [
-  { nome: "Polenta (500g)", preco: 13.00, descricao: "Polenta frita crocante e temperada." },
-  { nome: "Batata (500g)", preco: 21.00, descricao: "Batata frita crocante com sal." },
-  { nome: "Mandioca (500g)", preco: 20.00, descricao: "Mandioca frita crocante." },
-  { nome: "Nuggets (500g)", preco: 29.00, descricao: "Nuggets crocantes e dourados." },
-  { nome: "Linguiça Calaboiza (500g)", preco: 30.00, descricao: "Linguiça calabresa frita e temperada." },
-  { nome: "File de Tilapia (500g)", preco: 42.00, descricao: "Filé de tilapia empanado e crocante." },
-  { nome: "Carne Acebolada (500g)", preco: 45.00, descricao: "Carne bovina com cebola caramelizada." },
-  { nome: "Anéis de Cebola (400g)", preco: 28.00, descricao: "Anéis de cebola empanados e crocantes." },
-  { nome: "Frango Frito Americano (1kg)", preco: 40.00, descricao: "Frango frito estilo americano, dourado e crocante." }
+  { nome: "Polenta-Inteira (500g)", preco: 13.00, descricao: "Polenta frita crocante e temperada." },
+  { nome: "Polenta-Media (250g)", preco: 9.00, descricao: "Polenta frita crocante e temperada." },
+  { nome: "Batata-Inteira (500g)", preco: 21.00, descricao: "Batata frita crocante com sal." },
+  { nome: "Batata-Media (250g)", preco: 13.00, descricao: "Batata frita crocante com sal." },
+  { nome: "Mandioca-Inteira (500g)", preco: 20.00, descricao: "Mandioca frita crocante." },
+  { nome: "Mandioca-Media (250g)", preco: 13.00, descricao: "Mandioca frita crocante." },
+  { nome: "Nuggets-Inteira (500g)", preco: 29.00, descricao: "Nuggets crocantes e dourados." },
+  { nome: "Nuggets-Media (250g)", preco: 18.00, descricao: "Nuggets crocantes e dourados." },
+  { nome: "Linguiça Calaboiza-Inteira (500g)", preco: 30.00, descricao: "Linguiça calabresa frita e temperada." },
+  { nome: "Linguiça Calaboiza-Media (250g)", preco: 19.00, descricao: "Linguiça calabresa frita e temperada." },
+  { nome: "File de Tilapia-Inteira (500g)", preco: 42.00, descricao: "Filé de tilapia empanado e crocante." },
+  { nome: "File de Tilapia-Media (250g)", preco: 23.00, descricao: "Filé de tilapia empanado e crocante." },
+  { nome: "Carne Acebolada-Inteira (500g)", preco: 45.00, descricao: "Carne bovina com cebola caramelizada." },
+  { nome: "Carne Acebolada-Media (250g)", preco: 25.00, descricao: "Carne bovina com cebola caramelizada." },
+  { nome: "Anéis de Cebola-Inteira (400g)", preco: 28.00, descricao: "Anéis de cebola empanados e crocantes." },
+  { nome: "Anéis de Cebola-Media (200g)", preco: 17.00, descricao: "Anéis de cebola empanados e crocantes." },
+  { nome: "Frango Frito Americano-Inteiro (1kg)", preco: 40.00, descricao: "Frango frito estilo americano, dourado e crocante." }
 ];
 
 const bebidas = [
