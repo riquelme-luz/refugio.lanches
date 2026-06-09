@@ -322,7 +322,9 @@ function renderizarResultadosBusca(termoBusca = '') {
     ...filtrarProdutos(lanches, termoBusca).map(item => ({ ...item, categoria: 'lanches' })),
     ...filtrarProdutos(especiais, termoBusca).map(item => ({ ...item, categoria: 'especiais' })),
     ...filtrarProdutos(porcoes, termoBusca).map(item => ({ ...item, categoria: 'porcoes' })),
+    ...filtrarProdutos(bebidas, termoBusca).map(item => ({ ...item, categoria: 'bebidas' })),
     ...filtrarProdutos(sucosDrinks, termoBusca).map(item => ({ ...item, categoria: 'sucosDrinks' })),
+    ...filtrarProdutos(acrescimos, termoBusca).map(item => ({ ...item, categoria: 'acrescimos' })),
     ...filtrarProdutos(sobremesas, termoBusca).map(item => ({ ...item, categoria: 'sobremesas' }))
   ].sort((a, b) => b.prioridade - a.prioridade || a.produto.nome.localeCompare(b.produto.nome));
 
@@ -335,7 +337,8 @@ function renderizarResultadosBusca(termoBusca = '') {
 
   container.innerHTML = '<h3 class="resultado-titulo">Resultados da busca</h3>';
   itens.forEach(({ produto, categoria }) => {
-    container.innerHTML += criarCardProduto(produto, categoria, true);
+    const exibirImg = !(categoria === 'bebidas' || categoria === 'acrescimos');
+    container.innerHTML += criarCardProduto(produto, categoria, exibirImg);
   });
 }
 
