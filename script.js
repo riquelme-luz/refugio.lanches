@@ -1,5 +1,5 @@
 // CONFIGURACAO
-const numeroWhatsapp = "5541989017551";
+const numeroWhatsapp = "554499407307";
 
 // PRODUTOS
 const dogao = [
