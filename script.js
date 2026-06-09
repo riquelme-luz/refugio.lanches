@@ -39,7 +39,6 @@ const porcoes = [
   { nome: "File de Tilapia (500g)", preco: 42.00, descricao: "Filé de tilapia empanado e crocante." },
   { nome: "Carne Acebolada (500g)", preco: 45.00, descricao: "Carne bovina com cebola caramelizada." },
   { nome: "Anéis de Cebola (400g)", preco: 28.00, descricao: "Anéis de cebola empanados e crocantes." },
-  { nome: "Frango Frito Americano (500g)", preco: 22.50, descricao: "Frango frito estilo americano, dourado e crocante." },
   { nome: "Frango Frito Americano (1kg)", preco: 40.00, descricao: "Frango frito estilo americano, dourado e crocante." }
 ];
 
@@ -153,7 +152,6 @@ function gerarNomeImagem(nomeProduto, categoria = '') {
     'file de tilapia (500g)': 'file_tilapia',
     'carne acebolada (500g)': 'carne_acebolada',
     'aneis de cebola (400g)': 'aneis_cebola',
-    'frango frito americano (500g)': 'frango_frito_americano',
     'frango frito americano (1kg)': 'frango_frito_americano',
     'pink lemonade': 'pink_lemonade',
     'lagoa azul': 'lagoa_azul',
