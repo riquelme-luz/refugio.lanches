@@ -910,3 +910,10 @@ input.erro, textarea.erro, select.erro {
     margin: -12px 0 12px 0;
   }
 }
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #7a0000;
+  margin-top: 40px;
+  color: white;
+}
