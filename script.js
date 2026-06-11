@@ -840,7 +840,7 @@ function finalizarPedido() {
   mensagem += "📌 *Itens do Pedido:*\n";
 
   carrinho.forEach(item => {
-    mensagem += `- ${item.quantidade}unid ${item.nome} (R$ ${formatarPreco(item.preco * item.quantidade)})
+    mensagem += `- ${item.quantidade} Unid. ${item.nome} (R$ ${formatarPreco(item.preco * item.quantidade)})
 `;
   });
 
