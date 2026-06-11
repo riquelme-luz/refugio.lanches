@@ -687,6 +687,8 @@ function animarCarrinho() {
 }
 
 function adicionarCarrinho(nome, preco) {
+  animarProdutoParaCarrinho(event.target);
+  
   const itemExistente = carrinho.find(item => item.nome === nome);
 
   if (itemExistente) {
@@ -840,7 +842,7 @@ function finalizarPedido() {
   mensagem += "📌 *Itens do Pedido:*\n";
 
   carrinho.forEach(item => {
-    mensagem += `- ${item.quantidade} Unid. ${item.nome} (R$ ${formatarPreco(item.preco * item.quantidade)})
+    mensagem += `- ${item.quantidade} nid. ${item.nome} (R$ ${formatarPreco(item.preco * item.quantidade)})
 `;
   });
 
@@ -888,4 +890,41 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+//animar produto para o carrinho
+
+function animarProdutoParaCarrinho(botao) {
+  const card = botao.closest('.card');
+  const img = card.querySelector('img');
+
+  if (!img) return;
+
+  const imgClone = img.cloneNode(true);
+
+  const imgRect = img.getBoundingClientRect();
+  const carrinhoRect = document.getElementById('carrinhoBox').getBoundingClientRect();
+
+  imgClone.style.position = 'fixed';
+  imgClone.style.left = imgRect.left + 'px';
+  imgClone.style.top = imgRect.top + 'px';
+  imgClone.style.width = imgRect.width + 'px';
+  imgClone.style.height = imgRect.height + 'px';
+  imgClone.style.zIndex = '99999';
+  imgClone.style.pointerEvents = 'none';
+  imgClone.style.transition = 'all 0.8s ease';
+
+  document.body.appendChild(imgClone);
+
+  setTimeout(() => {
+    imgClone.style.left = carrinhoRect.left + 'px';
+    imgClone.style.top = carrinhoRect.top + 'px';
+    imgClone.style.width = '20px';
+    imgClone.style.height = '20px';
+    imgClone.style.opacity = '0';
+  }, 10);
+
+  setTimeout(() => {
+    imgClone.remove();
+  }, 850);
+}
 
