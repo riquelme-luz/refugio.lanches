@@ -917,27 +917,3 @@ footer {
   margin-top: 40px;
   color: white;
 }
-#scrollCarrinhoBtn {
-  position: fixed;
-  bottom: 80px;
-  right: 18px;
-  width: 52px;
-  height: 52px;
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 999px;
-  background: linear-gradient(145deg, #008000, #006400);
-  color: #fff;
-  font-size: 22px;
-  cursor: pointer;
-  z-index: 9999;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
-}
-
-@media (max-width: 768px) {
-  #scrollCarrinhoBtn {
-    bottom: 70px;
-    right: 14px;
-    width: 48px;
-    height: 48px;
-  }
-}
