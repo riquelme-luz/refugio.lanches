@@ -3,31 +3,31 @@ const numeroWhatsapp = "554499407307";
 
 // PRODUTOS
 const dogao = [
-  { nome: "Simples", preco: 13.00, descricao: "Pão, salsicha, molho e batata palha." },
-  { nome: "Duplo", preco: 15.00, descricao: "2 salsichas, molho e batata palha." },
-  { nome: "Frango", preco: 20.00, descricao: "Frango desfiado, molho e batata palha." },
-  { nome: "Calaboiza", preco: 20.00, descricao: "Calabresa, molho e batata palha." },
-  { nome: "Frangopiry", preco: 22.00, descricao: "Frango desfiado com catupiry, molho e batata palha." },
-  { nome: "Paulista", preco: 24.00, descricao: "Pão, hambúrguer, queijo, calabresa, ovo e salada." }
+  { nome: "Simples", preco: 13.00, descricao: "1 salsicha, alface, tomate, batata palha e molho." },
+  { nome: "Duplo", preco: 15.00, descricao: "2 salsichas, alface, tomate, batata palha e molho." },
+  { nome: "Frango", preco: 20.00, descricao: "1 salsicha, frango, alface, tomate, batata palha e molho." },
+  { nome: "Calaboiza", preco: 20.00, descricao: "1 salsicha, calaboiza, alface, tomate, batata palha e molho." },
+  { nome: "Frangopiry", preco: 22.00, descricao: "1 salsicha, frango, catupiry, alface, tomate, batata palha e molho." },
+  { nome: "Paulista", preco: 24.00, descricao: "1 salsicha, filé de carne acebolado, alface, tomate e molho." }
 ];
 
 const lanches = [
-  { nome: "X-Burguer", preco: 20.00, descricao: "Pão, hambúrguer, queijo e molho." },
-  { nome: "X-Salada", preco: 22.00, descricao: "Hambúrguer, queijo, alface e tomate." },
-  { nome: "X-Egg", preco: 24.00, descricao: "Hambúrguer, queijo e ovo." },
-  { nome: "X-Frango", preco: 26.00, descricao: "Frango, queijo e salada." },
-  { nome: "X-Calaboiza", preco: 26.00, descricao: "Calabresa, queijo e salada." },
-  { nome: "X-Paulista", preco: 32.00, descricao: "Hambúrguer, queijo, calabresa, ovo e salada." },
-  { nome: "X-Tudo", preco: 35.00, descricao: "Hambúrguer, queijo, bacon, ovo, alface e tomate." }
+  { nome: "X-Burguer", preco: 20.00, descricao: "hamburguer, muçarela, maionese e catchup." },
+  { nome: "X-Salada", preco: 22.00, descricao: "hamburguer, tomate, alface, muçarela, maionese ecatchup." },
+  { nome: "X-Egg", preco: 24.00, descricao: "Hambúrguer, tomate, alface, muçarela, 1 ovo, maionese e catchup." },
+  { nome: "X-Frango", preco: 26.00, descricao: "tomate, alface, muçarela, frango, maionese e catchup." },
+  { nome: "X-Calaboiza", preco: 26.00, descricao: "tomate,alface, muçarela, calabpiza, maionese e catchup." },
+  { nome: "X-Paulista", preco: 32.00, descricao: "tomate, alface, muçarela, filé de carne acebolado, maionese e catchup." },
+  { nome: "X-Tudo", preco: 35.00, descricao: "Hambúrguer, tomate, alface, muçarela, ovo, frango, calaboiza, maionese e catchup." }
 ];
 
 const especiais = [
-  { nome: "Smash Burguer", preco: 20.00, descricao: "Hambúrguer smash artesanal, queijo e molho especial." },
-  { nome: "Smash Turbo", preco: 26.00, descricao: "Smash artesanal com queijo extra e molho." },
-  { nome: "Smash Ultra", preco: 32.00, descricao: "Duplo smash, bacon e queijo premium." },
-  { nome: "Smash Supreme", preco: 37.00, descricao: "Duplo smash, bacon, queijo, alface e tomate." },
-  { nome: "+Q Donalds", preco: 29.00, descricao: "Hambúrguer artesanal, queijo, cebola e molho especial." },
-  { nome: "Natural", preco: 29.00, descricao: "Pão, frango, alface, tomate e maionese leve." }
+  { nome: "Smash Burguer", preco: 20.00, descricao: "Hambúrguer goumet de costela, cheddar, muçarela, e molho especial." },
+  { nome: "Smash Turbo", preco: 26.00, descricao: "2 hamburguers goumet decostela, cheddar, muçarela, e molho especial." },
+  { nome: "Smash Ultra", preco: 32.00, descricao: "3 hamburguers goumet de costela, cheddar, muçarela, e molho especial." },
+  { nome: "Smash Supreme", preco: 37.00, descricao: "1 hamburguer goumet de costela, 1 hamburguer de queijo empanado, geléia de pimenta doce, pickles, tomate, cebola e molho especial." },
+  { nome: "+Q Donalds", preco: 29.00, descricao: "Hambúrguer goumet de costela, cebola, alface, tomate, pepino em conserva, muçarela, cheddar e molho especial." },
+  { nome: "Natural", preco: 29.00, descricao: "hamburguer natural, cebola, alface, tomate, pepino em conserva, muçarela, cheddar e molho especial." }
 ];
 
 const porcoes = [
