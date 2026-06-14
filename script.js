@@ -60,7 +60,16 @@ const bebidas = [
   { nome: "Suco de Laranja/Uva integral 310ml", preco: 6.00, descricao: "Suco natural de laranja ou uva, 310 ml." },
   { nome: "Tubaina Garrafa", preco: 5.00, descricao: "Bebida tropical em garrafa, gelada." },
   { nome: "Agua sem gas", preco: 3.00, descricao: "Água mineral sem gás de 500 ml." },
-  { nome: "Agua com gas", preco: 3.50, descricao: "Água mineral com gás de 500 ml." }
+  { nome: "Agua com gas", preco: 3.50, descricao: "Água mineral com gás de 500 ml." },
+  { nome: "Refrigerante 200ml", preco: 3.00, descricao:"Qualquer efrigerante de 200 ml"},
+  { nome: "Cerveja sem alcool brahma lata", preco: 6.00, descricao: "cerveja sem alcool brahma lata"},
+  { nome: "cerveja sem alcool long neck", preco: 8.00, descricao: "cerveja sem alcool long neck"},
+  { nome: "gatorade/h20 limoneto", preco: 7.00, descricao:"Gatorade/h2o limonate"},
+  { nome: "Energetico monster 473ml", preco: 13.00, descricao:"energetico monster 473ml"},
+  { nome: "Energetico furioso 250ml", preco: 4.00, descricao:"energetico furioso 250ml"},
+  { nome: "tampico/ chá", preco: 6.00, descricao:"tampico/chá"},
+  { nome: "coca cola ks 290ml", preco: 4.50, descricao:"coca cola ks 290ml"},
+  { nome: "chweppes 1,5L", preco: 13.00, descricao:"schweppes 1,5L"}, 
 ];
 
 const acrescimos = [
