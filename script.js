@@ -6,9 +6,9 @@ const dogao = [
   { nome: "Simples", preco: 13.00, descricao: "1 salsicha, alface, tomate, batata palha e molho." },
   { nome: "Duplo", preco: 15.00, descricao: "2 salsichas, alface, tomate, batata palha e molho." },
   { nome: "Frango", preco: 20.00, descricao: "1 salsicha, frango, alface, tomate, batata palha e molho." },
-  { nome: "Calaboiza", preco: 20.00, descricao: "1 salsicha, calaboiza, alface, tomate, batata palha e molho." },
+  { nome: "Calaboiza", preco: 22.00, descricao: "1 salsicha, calaboiza, alface, tomate, batata palha e molho." },
   { nome: "Frangopiry", preco: 22.00, descricao: "1 salsicha, frango, catupiry, alface, tomate, batata palha e molho." },
-  { nome: "Paulista", preco: 24.00, descricao: "1 salsicha, filé de carne acebolado, alface, tomate e molho." }
+  { nome: "Paulista", preco: 25.00, descricao: "1 salsicha, filé de carne acebolado, alface, tomate e molho." }
 ];
 
 const lanches = [
@@ -16,9 +16,9 @@ const lanches = [
   { nome: "X-Salada", preco: 22.00, descricao: "hamburguer, tomate, alface, muçarela, maionese ecatchup." },
   { nome: "X-Egg", preco: 24.00, descricao: "Hambúrguer, tomate, alface, muçarela, 1 ovo, maionese e catchup." },
   { nome: "X-Frango", preco: 26.00, descricao: "tomate, alface, muçarela, frango, maionese e catchup." },
-  { nome: "X-Calaboiza", preco: 26.00, descricao: "tomate,alface, muçarela, calabpiza, maionese e catchup." },
-  { nome: "X-Paulista", preco: 32.00, descricao: "tomate, alface, muçarela, filé de carne acebolado, maionese e catchup." },
-  { nome: "X-Tudo", preco: 35.00, descricao: "Hambúrguer, tomate, alface, muçarela, ovo, frango, calaboiza, maionese e catchup." }
+  { nome: "X-Calaboiza", preco: 28.00, descricao: "tomate,alface, muçarela, calabpiza, maionese e catchup." },
+  { nome: "X-Paulista", preco: 34.00, descricao: "tomate, alface, muçarela, filé de carne acebolado, maionese e catchup." },
+  { nome: "X-Tudo", preco: 36.00, descricao: "Hambúrguer, tomate, alface, muçarela, ovo, frango, calaboiza, maionese e catchup." }
 ];
 
 const especiais = [
@@ -26,25 +26,25 @@ const especiais = [
   { nome: "Smash Turbo", preco: 26.00, descricao: "2 hamburguers goumet decostela, cheddar, muçarela, e molho especial." },
   { nome: "Smash Ultra", preco: 32.00, descricao: "3 hamburguers goumet de costela, cheddar, muçarela, e molho especial." },
   { nome: "Smash Supreme", preco: 37.00, descricao: "1 hamburguer goumet de costela, 1 hamburguer de queijo empanado, geléia de pimenta doce, pickles, tomate, cebola e molho especial." },
-  { nome: "+Q Donalds", preco: 29.00, descricao: "Hambúrguer goumet de costela, cebola, alface, tomate, pepino em conserva, muçarela, cheddar e molho especial." },
-  { nome: "Natural", preco: 29.00, descricao: "hamburguer natural, cebola, alface, tomate, pepino em conserva, muçarela, cheddar e molho especial." }
+  { nome: "+Q Donalds", preco: 32.00, descricao: "Hambúrguer goumet de costela, cebola, alface, tomate, pepino em conserva, muçarela, cheddar e molho especial." },
+  { nome: "Natural", preco: 30.00, descricao: "hamburguer natural, cebola, alface, tomate, pepino em conserva, muçarela, cheddar e molho especial." }
 ];
 
 const porcoes = [
   { nome: "Polenta-Inteira (500g)", preco: 13.00, descricao: "Polenta frita crocante e temperada." },
   { nome: "Polenta-Media (250g)", preco: 9.00, descricao: "Polenta frita crocante e temperada." },
-  { nome: "Batata-Inteira (500g)", preco: 21.00, descricao: "Batata frita crocante com sal." },
-  { nome: "Batata-Media (250g)", preco: 13.00, descricao: "Batata frita crocante com sal." },
+  { nome: "Batata-Inteira (500g)", preco: 22.00, descricao: "Batata frita crocante com sal." },
+  { nome: "Batata-Media (250g)", preco: 14.00, descricao: "Batata frita crocante com sal." },
   { nome: "Mandioca-Inteira (500g)", preco: 20.00, descricao: "Mandioca frita crocante." },
   { nome: "Mandioca-Media (250g)", preco: 13.00, descricao: "Mandioca frita crocante." },
   { nome: "Nuggets-Inteira (500g)", preco: 29.00, descricao: "Nuggets crocantes e dourados." },
   { nome: "Nuggets-Media (250g)", preco: 18.00, descricao: "Nuggets crocantes e dourados." },
   { nome: "Linguiça Calaboiza-Inteira (500g)", preco: 30.00, descricao: "Linguiça calabresa frita e temperada." },
   { nome: "Linguiça Calaboiza-Media (250g)", preco: 19.00, descricao: "Linguiça calabresa frita e temperada." },
-  { nome: "File de Tilapia-Inteira (500g)", preco: 42.00, descricao: "Filé de tilapia empanado e crocante." },
-  { nome: "File de Tilapia-Media (250g)", preco: 23.00, descricao: "Filé de tilapia empanado e crocante." },
-  { nome: "Carne Acebolada-Inteira (500g)", preco: 45.00, descricao: "Carne bovina com cebola caramelizada." },
-  { nome: "Carne Acebolada-Media (250g)", preco: 25.00, descricao: "Carne bovina com cebola caramelizada." },
+  { nome: "File de Tilapia-Inteira (500g)", preco: 43.00, descricao: "Filé de tilapia empanado e crocante." },
+  { nome: "File de Tilapia-Media (250g)", preco: 24.00, descricao: "Filé de tilapia empanado e crocante." },
+  { nome: "Carne Acebolada-Inteira (500g)", preco: 50.00, descricao: "Carne bovina com cebola caramelizada." },
+  { nome: "Carne Acebolada-Media (250g)", preco: 30.00, descricao: "Carne bovina com cebola caramelizada." },
   { nome: "Anéis de Cebola-Inteira (400g)", preco: 28.00, descricao: "Anéis de cebola empanados e crocantes." },
   { nome: "Anéis de Cebola-Media (200g)", preco: 17.00, descricao: "Anéis de cebola empanados e crocantes." },
   { nome: "Frango Frito Americano-Inteiro (1kg)", preco: 40.00, descricao: "Frango frito estilo americano, dourado e crocante." }
@@ -63,7 +63,7 @@ const bebidas = [
   { nome: "Agua com gas", preco: 3.50, descricao: "Água mineral com gás de 500 ml." },
   { nome: "Refrigerante 200ml", preco: 3.00, descricao:"Qualquer efrigerante de 200 ml"},
   { nome: "Cerveja sem alcool brahma lata", preco: 6.00, descricao: "cerveja sem alcool brahma lata"},
-  { nome: "cerveja sem alcool long neck", preco: 8.00, descricao: "cerveja sem alcool long neck"},
+  { nome: "cerveja sem alcool long neck", preco: 9.00, descricao: "cerveja sem alcool long neck"},
   { nome: "gatorade/h20 limoneto", preco: 7.00, descricao:"Gatorade/h2o limonate"},
   { nome: "Energetico monster 473ml", preco: 13.00, descricao:"energetico monster 473ml"},
   { nome: "Energetico furioso 250ml", preco: 4.00, descricao:"energetico furioso 250ml"},
@@ -85,15 +85,15 @@ const acrescimos = [
 ];
 
 const sobremesas = [
-  { nome: "Açai Polpa Norte 200ml", preco: 13.50, descricao: "Açaí puro com polpa de fruta, 200 ml." },
-  { nome: "Açai Polpa Norte 330ml", preco: 26.50, descricao: "Açaí puro com polpa de fruta, 330 ml." },
-  { nome: "Açai Polpa Norte 550ml", preco: 22.50, descricao: "Açaí puro com polpa de fruta, 550 ml." },
-  { nome: "Açai Polpa Norte 700ml", preco: 31.50, descricao: "Açaí puro com polpa de fruta, 700 ml." },
-  { nome: "Barca de Açai 500ml", preco: 35.50, descricao: "Açaí com leite condensado, leite ninho, banana, morango, paçoca, amendoim, disquete e choco ball." },
+  { nome: "Açai Polpa Norte 200ml", preco: 14.00, descricao: "Açaí puro com polpa de fruta, 200 ml." },
+  { nome: "Açai Polpa Norte 330ml", preco: 18.00, descricao: "Açaí puro com polpa de fruta, 330 ml." },
+  { nome: "Açai Polpa Norte 550ml", preco: 25.00, descricao: "Açaí puro com polpa de fruta, 550 ml." },
+  { nome: "Açai Polpa Norte 700ml", preco: 35.00, descricao: "Açaí puro com polpa de fruta, 700 ml." },
+  { nome: "Barca de Açai 500ml", preco: 37.00, descricao: "Açaí com leite condensado, leite ninho, banana, morango, paçoca, amendoim, disquete e choco ball." },
   { nome: "Batida de Açai Tradicional 475ml", preco: 17.50, descricao: "Açaí, leite, leite condensado, leite ninho e banana." },
   { nome: "Batida de Açai Paçocuda 475ml", preco: 17.50, descricao: "Açaí, leite, leite condensado, leite ninho, banana e paçoca." },
-  { nome: "Milkshake 330ml", preco: 17.50, descricao: "Milkshake de ovomaltine, capuccino, doce de leite ou oreo." },
-  { nome: "Milkshake 550ml", preco: 22.50, descricao: "Milkshake de ovomaltine, capuccino, doce de leite ou oreo." }
+  { nome: "Milkshake 330ml", preco: 18.00, descricao: "Milkshake de ovomaltine, capuccino ou oreo." },
+  { nome: "Milkshake 550ml", preco: 23.00, descricao: "Milkshake de ovomaltine, capuccino ou oreo." }
 ];
 
 const sucosDrinks = [
@@ -106,15 +106,20 @@ const sucosDrinks = [
 const adicionaisAcai = {
   tradicionais: {
     titulo: "Adicionais Tradicionais",
-    preco: 2.00,
+    preco: 3.00,
     itens: ["Banana", "Uva", "Granola", "Paçoca", "Leite Ninho", "Amendoim", "Leite Condensado", "Disquete", "ChocoBall"]
   },
   especiais: {
     titulo: "Adicionais Especiais",
-    preco: 4.00,
-    itens: ["Nutella", "Morango", "Mini Oreo", "Kiwi"]
+    preco: 4.50,
+    itens: ["Morango", "Mini Oreo", "Kiwi"]
+  },
+  extra: {
+    titulo: "Adicional Extra",
+    preco: 5.50,
+    itens: ["Nutella"]
   }
-};
+}
 
 const saboresMilkshake = {
   basicos: {
@@ -125,7 +130,7 @@ const saboresMilkshake = {
   premium: {
     titulo: "Sabores Premium",
     adicional: 1.00,
-    itens: ["Ovomaltine", "Capuccino", "Doce de Leite", "Oreo"]
+    itens: ["Ovomaltine","Capuccino","Oreo"]
   }
 };
 const saboresSucos = {
@@ -136,7 +141,11 @@ const saboresSucos = {
   }
 };
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-carrinho = carrinho.map(item => ({ ...item, quantidade: item.quantidade || 1 }));
+carrinho = carrinho.map(item => ({
+  ...item,
+  quantidade: Number(item.quantidade) || 1,
+  preco: Number(item.preco) || 0
+}));
 let total = 0;
 
 function salvarCarrinho() {
@@ -313,7 +322,7 @@ function criarCardProduto(produto, categoria = '', exibirImagem = true) {
         ? `<button onclick="abrirModalMilkshake('${produto.nome}', ${produto.preco})">Escolher Sabor</button>`
         : ehSuco
         ? `<button onclick="abrirModalSuco('${produto.nome}', ${produto.preco})">Escolher Sabor</button>`
-        : `<button onclick="adicionarCarrinho('${produto.nome}', ${produto.preco})">Adicionar ao Carrinho</button>`
+        : `<button onclick="adicionarCarrinho(this, '${produto.nome}', ${produto.preco})">Adicionar ao Carrinho</button>`
       }
     </div>
   `;
@@ -695,13 +704,30 @@ function animarCarrinho() {
   }, 300);
 }
 
-function adicionarCarrinho(nome, preco) {
-  animarProdutoParaCarrinho(event.target);
-  
+function adicionarCarrinho(botaoOuNome, nomeOuPreco, precoOpcional) {
+  let botao = null;
+  let nome;
+  let preco;
+
+  if (botaoOuNome instanceof HTMLElement) {
+    botao = botaoOuNome;
+    nome = nomeOuPreco;
+    preco = precoOpcional;
+  } else {
+    nome = botaoOuNome;
+    preco = nomeOuPreco;
+  }
+
+  if (botao instanceof HTMLElement) {
+    animarProdutoParaCarrinho(botao);
+  }
+
+  preco = Number(preco) || 0;
+
   const itemExistente = carrinho.find(item => item.nome === nome);
 
   if (itemExistente) {
-    itemExistente.quantidade++;
+    itemExistente.quantidade = Number(itemExistente.quantidade) + 1;
   } else {
     carrinho.push({ nome, preco, quantidade: 1 });
   }
@@ -715,6 +741,8 @@ function adicionarCarrinho(nome, preco) {
 function alterarQtd(nome, acao) {
   const item = carrinho.find(item => item.nome === nome);
   if (!item) return;
+
+  item.quantidade = Number(item.quantidade) || 0;
 
   if (acao === "mais") {
     item.quantidade++;
